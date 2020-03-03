@@ -1,0 +1,99 @@
+<!--
+	Puede que no actuen correctamente dependiendo de la configuración del navegador
+
+	En mi caso:
+		- Firefox tanto local como session se pierden al cerrar la ventana
+		- Chrome: tanto local como session se mantienen tras cerrar la ventana
+-->
+
+<!DOCTYPE HTML>
+<HTML>
+	<head>
+		<title>Pruebas LocalStorage</title>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+	</head>
+	<body>
+		<div id="bloqueValores">
+			<div id="valoresLocal">
+				HOLAAAA
+			</div>
+			<div id="valoresSession">
+				HOLAAAA2
+			</div>
+		</div>
+			
+		<div id="bloqueInputs">
+			<fieldset>
+				<legend>Ejemplo Storage</legend>
+				<p>Clave: </p><input id="inputClave"/>
+				<p>Valor: </p><input id="inputValor"/>
+			</fieldset>
+		</div>
+		<div id="botonesCrud">
+			<button onclick="guardarDato()">Guardar</button>
+			<button onclick="imprimirDatos()">Imprimir</button>
+			<button onclick="limpiarDatos()">Limpiar</button>
+		</div>
+		<script type="text/javascript">
+
+			function guardarDato(){
+				//Declaro variables para guardar valores
+				var inputKey;
+				var inputValor;
+
+				if(existenInputs()){
+					//Obtengo valores
+					inputKey = document.getElementById("inputClave").value;
+					inputValor = document.getElementById("inputValor").value;
+					
+					//Creo los objetos en storage
+					window.localStorage.setItem(inputKey, inputValor);
+					sessionStorage.setItem(inputKey, inputValor);
+				}
+			}
+
+			function imprimirDatos(){
+				//Declaro variables
+				var i, j, key, val;
+				var tempLocal="";
+				var tempSession="";
+
+				//Recorro todo el objeto localStorage
+				for(i=0;i<localStorage.length; i++){
+					key = window.localStorage.key(i);
+					val = window.localStorage.getItem(key);
+					tempLocal = tempLocal.concat(key, ": ", val, "</br>");
+				}
+
+				//Imprimo localStorage completo
+				document.getElementById("valoresLocal").innerHTML = tempLocal;
+
+				//Recorro todo el objeto localStorage
+				for(j=0;j<sessionStorage.length;j++){
+					key = window.localStorage.key(i);
+					val = window.localStorage.getItem(key);
+					tempSession = tempSession.concat(key, ": ", val, "</br>");
+				}
+
+				//Imprimo localStorage completo
+				document.getElementById("valoresSession").innerHTML = tempLocal;
+			}
+
+			function limpiarDatos(){
+				//Borrar datos de los storage
+				window.localStorage.clear();
+				sessionStorage.clear();
+			}
+
+			function existenInputs(){
+				if(document.getElementById("inputClave").value != "" && document.getElementById("inputValor").value){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			
+		</script>
+	</body>
+</HTML>
