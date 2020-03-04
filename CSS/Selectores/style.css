@@ -1,0 +1,146 @@
+html{
+	background-color: #AAAAAA;
+}
+
+	body{
+		width: 100%;
+	}
+
+	.divSeccion{
+		border: 2px solid black;
+		width: 95%;
+		margin: 0 auto;
+		margin-bottom: 10px;
+	}
+
+	/*selector exacto*/
+	div[class="divExacto"]{
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+		background-color: #afdfff;
+		border: 2px solid blue;
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+
+	/*selector empieza por...*/
+	div[class^="divEmpi"]{
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+		background-color: #b9ffaf;
+		border: 2px solid green;
+		margin-top: 3px;
+		margin-left: 3px;
+	}
+
+	/*Selector termina por...*/
+	div[class$="naliza"]{
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+		background-color: #fffeaf;
+		border: 2px solid yellow;
+		margin-top: 4px;
+		margin-left: 4px;
+	}
+
+	/*Selector contiene...*/
+	div[class*="Conti"]{
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+		background-color: #ffa0a0;
+		border: 2px solid red;
+		margin-top: 4px;
+		margin-left: 4px;
+	}
+
+	/*Selector hermano*/
+	.divSeccion ~ .selecHermano{
+		width: 95%;
+		margin: 0 auto;
+		height:100px;
+		background-color: #fdc984;
+		border: 2px solid orange;
+		margin-bottom: 10px;
+	}
+
+	/*Selector hijos*/
+	.divSeccion > .divHijo{
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+		background-color: #ffb6ec;
+		border: 2px solid pink;
+		margin-top: 4px;
+		margin-left: 4px;
+	}
+
+	.divFirstLine{
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+	}
+
+	.divFirstLine p::first-line{
+		color: red;
+	}
+
+	.divFirstLetra{
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+	}
+
+	.divFirstLetra p::first-letter{
+		color: green;
+	}
+
+	.divAntes p::before{
+		content: "**Trozo previo** ";
+		color: orange;
+	}
+
+	.divDespues p::after{
+		content: " **Trozo posterior**";
+		color: orange;
+	}
+
+	.divSeleccion p::selection{
+		background-color: yellow;
+	}
+
+	.divHijoNum p:nth-child(2){
+		color: cyan;
+	}
+
+	.divPrimHijo p:first-child{
+		color: cyan;
+	}
+
+	.divUltHijo p:last-child{
+		color: cyan;
+	}
+
+	.divVacio p:empty{
+		width: 50px;
+		height: 20px;
+		background-color: red;
+	}
+
+	.divTipoNth p:nth-of-type(2){
+		background-color: orange;
+	}
+
+	.divUltimoTipoNth p:nth-last-of-type(1){
+		background-color: yellow;
+	}
+
+	.divNot :not(p){
+		background-color: blue;
+	}
+
+
+
